@@ -54,29 +54,29 @@ lancacheSetup() {
 
 # Setting up lancache to start on boot, and restart every 24 hours
 lancacheAutoRestart() {
-    cd $lancacheDir/$lancacheDirectoryName
+    cd $lancacheDIR/$lancacheDirectoryName
     cp docker-compose.yml docker-compose-old.yml
     cat docker-compose-old.yml | 
-        sed -e 'HTTPS/,/tcp/d' -e 's/#\ \ \ \ restart\: unless-stopped/\ \ \ \ restart\: always/' | 
+        sed -e '/HTTPS/,/tcp/d' -e 's/#\ \ \ \ restart\: unless-stopped/\ \ \ \ restart\: always/' | 
         cat -s > docker-compose.yml
     rm docker-compose-old.yml
     echo '#!/bin/bash' > restartCachetmp.sh
-    echo 'docker-compose restart' > restartCachetmp.sh
+    echo "cd $lancacheDIR/$lancacheDirectoryName" >> restartCachetmp.sh
+    echo 'docker-compose restart' >> restartCachetmp.sh
     chmod +x restartCachetmp.sh
-    echo "* * * * * $lancacheDir/$lancacheDirectoryName/restartCache.sh"
-    #echo "0 3 * * * $lancacheDir/$lancacheDirectoryName/restartCache.sh"
+    (crontab -l; echo "0 3 * * * $lancacheDIR/$lancacheDirectoryName/restartCache.sh") | sort -u | crontab -
 }
 
 # Starting lancache and downloading lancache docker images
 startLancache() {
-    cd $lancacheDir/$lancacheDirectoryName
+    cd $lancacheDIR/$lancacheDirectoryName
     clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
     docker-compose up -d
 }
 
 # Renaming the restartCache script to the correct name, this is to prevent issues during setup process.
 restartScriptRename() {
-    cd $lancacheDir/$lancacheDirectoryName 
+    cd $lancacheDIR/$lancacheDirectoryName 
     mv restartCachetmp.sh restartCache.sh
 }
 
