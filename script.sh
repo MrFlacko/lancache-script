@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Some Global Variables
+os_version="$(lsb_release -a 2> /dev/null | grep Desc | sed -e 's/.*://' -e 's/^[ \t]*//')"
+
 # Some colours that are used throughout the script
 LIGHT_RED='\033[1;31m'
 RED='\033[0;31m'
