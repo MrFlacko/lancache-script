@@ -25,7 +25,7 @@ runSystemUpdates() {
 }
 
 installDocker() {
-    sleep 3 && clear && echo -e "\n\t${BLUE}Installing Docker Dependencies...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${BLUE}Installing Key Dependencies...${NoColor}" && sleep 3
     apt install apt-transport-https ca-certificates curl software-properties-common -y
     sleep 3 && clear && echo -e "\n\t${BLUE}Adding Docker Updated Repositories...${NoColor}" && sleep 3
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
