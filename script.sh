@@ -54,7 +54,7 @@ lancacheSetup() {
 
 # Starting lancache and downloading lancache docker images
 startLancache() {
-    sleep 3 && clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
+    clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
     docker-compose up -d
 }
 
