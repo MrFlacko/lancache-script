@@ -1,4 +1,4 @@
-### lancache-script ###
+# lancache-script #
 Script that automatically installs and sets up lancache on Ubuntu 20.04 Linux
 You can run this by doing the command : bash <(curl -s https://raw.githubusercontent.com/MrFlacko/lancache-script/main/script.sh) :
 
