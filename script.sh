@@ -44,6 +44,7 @@ lancacheSetup() {
     sleep 3 && clear && echo -e "\n\t${BLUE}Setting up lancache...${NoColor}" && sleep 3
     cd $lancacheDIR
     git clone $lancacheDockerLink $lancacheDirectoryName
+    cd $lancacheDirectoryName
     sleep 3 && clear && echo -e "\n\t${BLUE}Listing IP Addresses...${NoColor}" && sleep 3
     ip a | grep inet
     echo
