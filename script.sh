@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Some Global Variables
-os_version="$(lsb_release -a 2> /dev/null | grep Desc | sed -e 's/.*://' -e 's/^[ \t]*//')"
+osVersion="$(lsb_release -a 2> /dev/null | grep Desc | sed -e 's/.*://' -e 's/^[ \t]*//')"
 
 # Some colours that are used throughout the script
 LIGHT_RED='\033[1;31m'
@@ -14,7 +14,7 @@ NoColor='\033[0m'
 
 # Initial Checks to make sure the script can run
 [[ $EUID -ne 0 ]] && echo -e ""$RED"Error: Please run this script with root privileges (sudo)"$NoColor"" && exit 1
-[[ -z $(echo $os_version | grep 'Ubuntu 20') ]] && echo -e ""$RED"Error: This script must be ran with Ubuntu 20.04"$NoColor"" && exit 1
+[[ -z $(echo $osVersion | grep 'Ubuntu 20') ]] && echo -e ""$RED"Error: This script must be ran with Ubuntu 20.04"$NoColor"" && exit 1
 
 # Updating the system packages to make sure you have the correct versions of everything
 runSystemUpdates() {
