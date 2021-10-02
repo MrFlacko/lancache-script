@@ -47,7 +47,7 @@ lancacheSetup() {
     sleep 3 && clear && echo -e "\n\t${BLUE}Listing IP Addresses...${NoColor}" && sleep 3
     ip a | grep inet
     echo
-    read "Press Enter to customize Cache settings, Once settings are saved script will continue"
+    read -p "Press Enter to customize Cache settings, Once settings are saved script will continue"
     nano .env
 }
 
