@@ -5,7 +5,6 @@ This script is designed to be run on a fresh install of ubuntu 20.04, if you alr
 
 When you run this script, it will first verify you are using Ubuntu 20.04, then it will verify if you are running it with Root Privileges
 
-Markup :
 * It will run the normal system updates
 * It will add the docker repo to the repository list
 * It will then install the latest version of docker and docker-compose
