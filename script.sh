@@ -50,7 +50,7 @@ lancacheSetup() {
 }
 
 startLancache() {
-    sleep3 && clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
     docker-compose up -d
 }
 
