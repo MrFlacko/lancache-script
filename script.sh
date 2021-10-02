@@ -18,7 +18,7 @@ NoColor='\033[0m'
 
 # Updating the system packages to make sure you have the correct versions of everything
 runSystemUpdates() {
-    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Updating System Repositories...${NoColor}" && sleep 3
+    clear && echo -e "\n\t${DARK_GRAY}Updating System Repositories...${NoColor}" && sleep 3
     apt update
     sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Updating System...${NoColor}" && sleep 3
     apt upgrade -y
