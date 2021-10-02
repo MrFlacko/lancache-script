@@ -9,9 +9,9 @@ lancacheDirectoryName="lancache"
 # Some colours that are used throughout the script
 LIGHT_RED='\033[1;31m'
 RED='\033[0;31m'
-LIGHT_BLUE='\033[0;96m'
+LIGHT_DARK_GRAY='\033[0;96m'
 BLUE='\033[1;34m'
-BLUE='\033[0;37m'
+DARK_GRAY='\033[0;37m'
 LIGHT_GREEN='\033[1;32m'
 NoColor='\033[0m'
 
@@ -21,31 +21,31 @@ NoColor='\033[0m'
 
 # Updating the system packages to make sure you have the correct versions of everything
 runSystemUpdates() {
-    clear && echo -e "\n\t${BLUE}Updating System Repositories...${NoColor}" && sleep 3
+    clear && echo -e "\n\t${DARK_GRAY}Updating System Repositories...${NoColor}" && sleep 3
     apt update
-    sleep 3 && clear && echo -e "\n\t${BLUE}Updating System...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Updating System...${NoColor}" && sleep 3
     apt upgrade -y
 }
 
 # Installing latest version of Docker and DockerCompose
 installDocker() {
-    sleep 3 && clear && echo -e "\n\t${BLUE}Installing Key Dependencies...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Installing Key Dependencies...${NoColor}" && sleep 3
     apt install apt-transport-https ca-certificates curl software-properties-common git -y
-    sleep 3 && clear && echo -e "\n\t${BLUE}Adding Docker Updated Repositories...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Adding Docker Updated Repositories...${NoColor}" && sleep 3
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
     apt-cache policy docker-ce
-    sleep 3 && clear && echo -e "\n\t${BLUE}Installing Docker and Docker-Compose...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Installing Docker and Docker-Compose...${NoColor}" && sleep 3
     apt install docker-ce docker-compose -y
 }
 
 # The first setup of Lancache, where the user can input required infomation
 lancacheSetup() {
-    sleep 3 && clear && echo -e "\n\t${BLUE}Setting up lancache...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Setting up lancache...${NoColor}" && sleep 3
     cd $lancacheDIR
     git clone $lancacheDockerLink $lancacheDirectoryName
     cd $lancacheDirectoryName
-    sleep 3 && clear && echo -e "\n\t${BLUE}Listing IP Addresses...${NoColor}" && sleep 3
+    sleep 3 && clear && echo -e "\n\t${DARK_GRAY}Listing IP Addresses...${NoColor}" && sleep 3
     ip a | grep inet
     echo
     read -p "Press Enter to customize Cache settings, Once settings are saved script will continue"
@@ -70,7 +70,7 @@ lancacheAutoRestart() {
 # Starting lancache and downloading lancache docker images
 startLancache() {
     cd $lancacheDIR/$lancacheDirectoryName
-    clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
+    clear && echo -e "\n\t${DARK_GRAY}Starting Lancache...${NoColor}" && sleep 3
     docker-compose up -d
 }
 
