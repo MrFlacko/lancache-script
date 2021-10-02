@@ -2,6 +2,9 @@
 
 # Some Global Variables
 osVersion="$(lsb_release -a 2> /dev/null | grep Desc | sed -e 's/.*://' -e 's/^[ \t]*//')"
+lancacheDIR="/var/lib"
+lancacheDockerLink="https://github.com/lancachenet/docker-compose"
+lancacheDirectoryName="lancache"
 
 # Some colours that are used throughout the script
 LIGHT_RED='\033[1;31m'
@@ -26,7 +29,7 @@ runSystemUpdates() {
 
 installDocker() {
     sleep 3 && clear && echo -e "\n\t${BLUE}Installing Key Dependencies...${NoColor}" && sleep 3
-    apt install apt-transport-https ca-certificates curl software-properties-common -y
+    apt install apt-transport-https ca-certificates curl software-properties-common git -y
     sleep 3 && clear && echo -e "\n\t${BLUE}Adding Docker Updated Repositories...${NoColor}" && sleep 3
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
@@ -35,5 +38,23 @@ installDocker() {
     apt install docker-ce docker-compose -y
 }
 
+lancacheSetup() {
+    sleep 3 && clear && echo -e "\n\t${BLUE}Setting up lancache...${NoColor}" && sleep 3
+    cd $lancacheDIR
+    git clone $lancacheDockerLink $lancacheDirectoryName
+    sleep 3 && clear && echo -e "\n\t${BLUE}Listing IP Addresses...${NoColor}" && sleep 3
+    ip a | grep inet
+    echo
+    read "Press Enter to customize Cache settings, Once settings are saved script will continue"
+    nano .env
+}
+
+startLancache() {
+    sleep3 && clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
+    docker-compose up -d
+}
+
 runSystemUpdates
 installDocker
+lancacheSetup
+startLancache
