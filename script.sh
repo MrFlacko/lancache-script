@@ -27,6 +27,7 @@ runSystemUpdates() {
     apt upgrade -y
 }
 
+# Installing latest version of Docker and DockerCompose
 installDocker() {
     sleep 3 && clear && echo -e "\n\t${BLUE}Installing Key Dependencies...${NoColor}" && sleep 3
     apt install apt-transport-https ca-certificates curl software-properties-common git -y
@@ -38,6 +39,7 @@ installDocker() {
     apt install docker-ce docker-compose -y
 }
 
+# The first setup of Lancache, where the user can input required infomation
 lancacheSetup() {
     sleep 3 && clear && echo -e "\n\t${BLUE}Setting up lancache...${NoColor}" && sleep 3
     cd $lancacheDIR
@@ -49,6 +51,7 @@ lancacheSetup() {
     nano .env
 }
 
+# Starting lancache and downloading lancache docker images
 startLancache() {
     sleep 3 && clear && echo -e "\n\t${BLUE}Starting Lancache...${NoColor}" && sleep 3
     docker-compose up -d
