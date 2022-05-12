@@ -63,6 +63,8 @@ lancacheAutoRestart() {
     echo '#!/bin/bash' > restartCachetmp.sh
     echo "cd $lancacheDIR/$lancacheDirectoryName" >> restartCachetmp.sh
     echo 'docker-compose restart' >> restartCachetmp.sh
+    echo 'sleep 15' >> restartCachetmp.sh
+    echo 'reboot' >> restartCachetmp.sh
     chmod +x restartCachetmp.sh
     (crontab -l; echo "0 3 * * * $lancacheDIR/$lancacheDirectoryName/restartCache.sh") | sort -u | crontab -
 }
