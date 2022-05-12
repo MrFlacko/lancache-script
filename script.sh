@@ -66,7 +66,7 @@ lancacheAutoRestart() {
     echo 'sleep 15' >> restartCachetmp.sh
     echo 'reboot' >> restartCachetmp.sh
     chmod +x restartCachetmp.sh
-    (crontab -l; echo "0 3 * * * $lancacheDIR/$lancacheDirectoryName/restartCache.sh") | sort -u | crontab -
+    (crontab -l; echo "0 3 * * * root $lancacheDIR/$lancacheDirectoryName/restartCache.sh") | sort -u | crontab -
 }
 
 # Starting lancache and downloading lancache docker images
