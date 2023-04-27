@@ -48,7 +48,7 @@ lancacheSetup() {
     ip a | grep inet
     echo
     read -p "Press Enter to customize Cache settings, Once settings are saved script will continue"
-    nano .env
+    sudo nano .env
 }
 
 # Setting up lancache to start on boot, and restart every 24 hours
