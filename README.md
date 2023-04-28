@@ -5,6 +5,8 @@ You can run this by doing the command
  
     bash < <(curl -s https://raw.githubusercontent.com/PycraftDeveloper/lancache-script/main/script.sh)
 
+_Note: If you experience "bash: /dev/fd/63: No such file or directory" (https://askubuntu.com/questions/1086617/dev-fd-63-no-such-file-or-directory) when uisng the above script, you can fix that by using this script:_
+    `bash < <(curl -s https://raw.githubusercontent.com/PycraftDeveloper/lancache-script/main/script.sh)`
 ## Requirements ##
 This script is designed to be run on a fresh install of ubuntu 20.04, if you already installed docker it has a chance of breaking.
 
