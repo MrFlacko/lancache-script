@@ -66,6 +66,7 @@ lancacheAutoRestart() {
     echo 'sleep 15' >> restartCachetmp.sh
     echo 'reboot' >> restartCachetmp.sh
     chmod +x restartCachetmp.sh
+    mv restartCachetmp.sh restartCache.sh
     (crontab -l; echo "0 3 * * * root $lancacheDIR/$lancacheDirectoryName/restartCache.sh") | sort -u | crontab -
 }
 
